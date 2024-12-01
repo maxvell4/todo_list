@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add/Edit Tag</title>
+</head>
+<body>
+  <h1>{% if tag %}Edit Tag{% else %}Add Tag{% endif %}</h1>
+  <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  <a href="{% url 'tag_list' %}">Back to Tag List</a>
+</body>
+</html>

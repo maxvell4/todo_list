@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+</head>
+<body>
+  <h1>Todo List</h1>
+  <a href="{% url 'add_task' %}Add Task"</a>
+  <ul>
+    {% for task in tasks %}
+    <li>
+      {{ task.content}}
+      {% if not task.is_done %}
+      <a href="{% url 'status_task' task.pk %}">Complete</a>
+      {% else %}
+      <a href="{% url 'status_task' task.pk %}">Undo</a>
+      {% endif %}
+      <a href="{% url 'edit_task' task.pk %}"> Edit</a>
+      <a href="{% url 'delete_task' task.pk %}">Delete</a>
+    </li>
+    {% endfor %}
+  </ul>
+<a href="{% url 'tag_list' %}">Tags</a>
+</body>
+</html>
